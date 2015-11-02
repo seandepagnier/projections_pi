@@ -48,7 +48,9 @@
 
 class PreferencesDialog;
 
-class projections_pi : public wxEvtHandler, public opencpn_plugin_111
+enum Projection { MERCATOR, ORTHOGRAPHIC, POLAR, STEREOGRAPHIC, GNOMONIC, EQUIRECTANGULAR, NUM_PROJECTIONS };
+
+class projections_pi : public wxEvtHandler, public opencpn_plugin_113
 {
 public:
     projections_pi( void *ppimgr );
@@ -66,7 +68,9 @@ public:
     wxString GetShortDescription();
     wxString GetLongDescription();
 
+    void SetCurrentViewPort(PlugIn_ViewPort &vp);
     void ShowPreferencesDialog( wxWindow* parent );
+    void OnContextMenuItemCallback(int id);
 
 private:
 
@@ -75,6 +79,9 @@ private:
 
     wxFileConfig     *m_pConfig;
     PreferencesDialog *m_PreferencesDialog;
+
+    wxMenuItem *m_projection_menuitem[NUM_PROJECTIONS];
+    int m_projection_menu_id[NUM_PROJECTIONS];
 };
 
 #endif

@@ -1,0 +1,6 @@
+src/PreferencesDialog.cpp
+src/PreferencesDialog.h
+src/ProjectionsUI.cpp
+src/ProjectionsUI.h
+src/projections_pi.cpp
+src/projections_pi.h

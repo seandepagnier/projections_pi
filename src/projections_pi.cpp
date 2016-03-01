@@ -75,7 +75,6 @@ projections_pi::projections_pi(void *ppimgr)
 
 int projections_pi::Init(void)
 {
-    m_PreferencesDialog = new PreferencesDialog(GetOCPNCanvasWindow());
     AddLocaleCatalog( _T("opencpn-projections_pi") );
 
     //    Get a pointer to the opencpn configuration object
@@ -148,7 +147,7 @@ wxString projections_pi::GetLongDescription()
     return _("Projections plugin offers alternative projections\n\
 The projections can be configured by the user\n\
 These projections may be useful for a more accurate interpretation of navigational data\n\
-Mercator projections are especially skewed in high latitudes for examples\n\
+Mercator projections are especially skewed in high latitudes.\n\
 \n\
   This plugin requires OpenGL enabled.\n");
 }
@@ -161,7 +160,8 @@ void projections_pi::SetCurrentViewPort(PlugIn_ViewPort &vp)
 
 void projections_pi::ShowPreferencesDialog( wxWindow* parent )
 {
-    m_PreferencesDialog->Show();
+    PreferencesDialog dlg(parent);
+    dlg.ShowModal();
 }
 
 void projections_pi::OnContextMenuItemCallback(int id)

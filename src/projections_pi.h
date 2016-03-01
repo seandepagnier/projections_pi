@@ -78,7 +78,6 @@ private:
     bool SaveConfig( void );
 
     wxFileConfig     *m_pConfig;
-    PreferencesDialog *m_PreferencesDialog;
 
     wxMenuItem *m_projection_menuitem[NUM_PROJECTIONS];
     int m_projection_menu_id[NUM_PROJECTIONS];

@@ -2,69 +2,69 @@ msgid ""
 msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-25 09:51-0300\n"
-"PO-Revision-Date: 2016-02-25 08:04-0500\n"
+"POT-Creation-Date: 2018-02-15 14:05-0300\n"
+"PO-Revision-Date: 2018-02-15 13:04-0500\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
-"Language-Team: Italian\n"
-"Language: it_IT\n"
+"Language-Team: Estonian\n"
+"Language: et_EE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
 "X-Crowdin-Project: opencpn\n"
-"X-Crowdin-Language: it\n"
+"X-Crowdin-Language: et\n"
 "X-Crowdin-File: /plugins/projections_pi/po/projections_pi.pot\n"
 
 #: src/ProjectionsUI.cpp:22
 msgid "About Author"
-msgstr ""
+msgstr "Autorist"
 
 #: src/ProjectionsUI.h:44
-msgid "Status Bar Preferences"
+msgid "Projections Preferences"
 msgstr ""
 
 #: src/projections_pi.cpp:40
 msgid "Mercator"
-msgstr ""
+msgstr "Merkaator"
 
 #: src/projections_pi.cpp:40
 msgid "Orthographic"
-msgstr ""
+msgstr "Ortograafiline"
 
 #: src/projections_pi.cpp:40
 msgid "Polar"
-msgstr ""
+msgstr "Polaarne"
 
 #: src/projections_pi.cpp:40
 msgid "Stereographic"
-msgstr ""
+msgstr "Stereograafiline"
 
 #: src/projections_pi.cpp:40
 msgid "Gnomonic"
-msgstr ""
+msgstr "Gnomooniline"
 
 #: src/projections_pi.cpp:40
 msgid "Equirectangular"
-msgstr ""
+msgstr "Geograafiline projektsioon"
 
-#: src/projections_pi.cpp:93
+#: src/projections_pi.cpp:92
 msgid "Projection"
-msgstr ""
+msgstr "Projektsioon"
 
-#: src/projections_pi.cpp:138
+#: src/projections_pi.cpp:137
 msgid "Projections"
-msgstr ""
+msgstr "Projektsioonid"
 
-#: src/projections_pi.cpp:143
+#: src/projections_pi.cpp:142
 msgid "Projections plugin offers alternate projections"
-msgstr ""
+msgstr "Projections-plugin pakub alternatiivseid projektsioone"
 
-#: src/projections_pi.cpp:148
+#: src/projections_pi.cpp:147
 msgid "Projections plugin offers alternative projections\n"
 "The projections can be configured by the user\n"
 "These projections may be useful for a more accurate interpretation of navigational data\n"
-"Mercator projections are especially skewed in high latitudes for examples\n\n"
+"Mercator projections are especially skewed in high latitudes.\n\n"
 "  This plugin requires OpenGL enabled.\n"
 msgstr ""
 

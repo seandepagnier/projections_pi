@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-15 14:05-0300\n"
-"PO-Revision-Date: 2018-02-15 13:05-0500\n"
+"PO-Revision-Date: 2018-03-03 08:23-0500\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Finnish\n"
 "Language: fi_FI\n"
@@ -22,7 +22,7 @@ msgstr "Tietoa Tekijästä"
 
 #: src/ProjectionsUI.h:44
 msgid "Projections Preferences"
-msgstr ""
+msgstr "Projektioiden asetukset"
 
 #: src/projections_pi.cpp:40
 msgid "Mercator"
@@ -66,5 +66,9 @@ msgid "Projections plugin offers alternative projections\n"
 "These projections may be useful for a more accurate interpretation of navigational data\n"
 "Mercator projections are especially skewed in high latitudes.\n\n"
 "  This plugin requires OpenGL enabled.\n"
-msgstr ""
+msgstr "Projektiot plugin tarjoaa vaihtoehtoisia projektioita\n"
+"Käyttäjä voi määrittää projektioita\n"
+"Nämä projektiot voivat olla hyödyllisiä navigoinnin datan tarkemmassa tulkinnassa\n"
+"Mercator projektiot ovat erityisesti vinossa korkeilla leveysasteilla.\n\n"
+" Tämä laajennus vaatii OpenGL:n käyttöön.\n"
 

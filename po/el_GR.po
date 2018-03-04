@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-15 14:05-0300\n"
-"PO-Revision-Date: 2018-02-15 13:05-0500\n"
+"PO-Revision-Date: 2018-03-04 05:54-0500\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
@@ -22,7 +22,7 @@ msgstr "Σχετικά με το συγγραφέα"
 
 #: src/ProjectionsUI.h:44
 msgid "Projections Preferences"
-msgstr ""
+msgstr "Προτιμήσεις του πρόσθετου Projections"
 
 #: src/projections_pi.cpp:40
 msgid "Mercator"
@@ -66,5 +66,9 @@ msgid "Projections plugin offers alternative projections\n"
 "These projections may be useful for a more accurate interpretation of navigational data\n"
 "Mercator projections are especially skewed in high latitudes.\n\n"
 "  This plugin requires OpenGL enabled.\n"
-msgstr ""
+msgstr "Το πρόσθετο Projections προσφέρει εναλλακτικές προβολές.\n"
+"Οι προβολές μπορούν να ρυθμιστούν από τον χρήστη.\n"
+"Αυτές οι προβολές μπορεί να είναι χρήσιμες για μια πιο ακριβή παρουσίαση των δεδομένων της ναυσιπλοΐας.\n"
+"Οι Μερκατορικές προβολές παραμορφώνονται, ιδιαίτερα σε μεγάλα πλάτη.\n\n"
+"Το πρόσθετο απαιτεί ενεργοποίηση του OpenGL.\n"
 

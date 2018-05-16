@@ -1,0 +1,70 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: opencpn\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-15 14:05-0300\n"
+"PO-Revision-Date: 2018-03-04 05:54-0500\n"
+"Last-Translator: nohal <pavel@kalian.cz>\n"
+"Language-Team: Polish\n"
+"Language: pl_PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=((n == 1) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || n%10 == 1 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 12 && n%100 <= 14)) ? 2 : 3));\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: opencpn\n"
+"X-Crowdin-Language: pl\n"
+"X-Crowdin-File: /plugins/projections_pi/po/projections_pi.pot\n"
+
+#: src/ProjectionsUI.cpp:22
+msgid "About Author"
+msgstr "O autorze"
+
+#: src/ProjectionsUI.h:44
+msgid "Projections Preferences"
+msgstr ""
+
+#: src/projections_pi.cpp:40
+msgid "Mercator"
+msgstr "Mercator"
+
+#: src/projections_pi.cpp:40
+msgid "Orthographic"
+msgstr "Ortograficzny"
+
+#: src/projections_pi.cpp:40
+msgid "Polar"
+msgstr "Biegunowy"
+
+#: src/projections_pi.cpp:40
+msgid "Stereographic"
+msgstr "Stereograficzny"
+
+#: src/projections_pi.cpp:40
+msgid "Gnomonic"
+msgstr "Gnomoniczne"
+
+#: src/projections_pi.cpp:40
+msgid "Equirectangular"
+msgstr "Equirectangular"
+
+#: src/projections_pi.cpp:92
+msgid "Projection"
+msgstr "Rzut"
+
+#: src/projections_pi.cpp:137
+msgid "Projections"
+msgstr "Rzuty"
+
+#: src/projections_pi.cpp:142
+msgid "Projections plugin offers alternate projections"
+msgstr "Wtyczka rzutów oferuje alternatywne rzuty"
+
+#: src/projections_pi.cpp:147
+msgid "Projections plugin offers alternative projections\n"
+"The projections can be configured by the user\n"
+"These projections may be useful for a more accurate interpretation of navigational data\n"
+"Mercator projections are especially skewed in high latitudes.\n\n"
+"  This plugin requires OpenGL enabled.\n"
+msgstr ""
+

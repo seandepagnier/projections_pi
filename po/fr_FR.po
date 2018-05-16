@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-25 09:51-0300\n"
-"PO-Revision-Date: 2016-02-25 08:03-0500\n"
+"POT-Creation-Date: 2018-02-15 14:05-0300\n"
+"PO-Revision-Date: 2018-03-04 05:54-0500\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -18,53 +18,57 @@ msgstr ""
 
 #: src/ProjectionsUI.cpp:22
 msgid "About Author"
-msgstr ""
+msgstr "Au sujet de l'auteur"
 
 #: src/ProjectionsUI.h:44
-msgid "Status Bar Preferences"
-msgstr ""
+msgid "Projections Preferences"
+msgstr "Préférences de Projections"
 
 #: src/projections_pi.cpp:40
 msgid "Mercator"
-msgstr ""
+msgstr "Mercator"
 
 #: src/projections_pi.cpp:40
 msgid "Orthographic"
-msgstr ""
+msgstr "Orthographique"
 
 #: src/projections_pi.cpp:40
 msgid "Polar"
-msgstr ""
+msgstr "Polaire"
 
 #: src/projections_pi.cpp:40
 msgid "Stereographic"
-msgstr ""
+msgstr "Stéréographique"
 
 #: src/projections_pi.cpp:40
 msgid "Gnomonic"
-msgstr ""
+msgstr "Gnomoniques"
 
 #: src/projections_pi.cpp:40
 msgid "Equirectangular"
-msgstr ""
+msgstr "Équirectangulaire"
 
-#: src/projections_pi.cpp:93
+#: src/projections_pi.cpp:92
 msgid "Projection"
-msgstr ""
+msgstr "Projection"
 
-#: src/projections_pi.cpp:138
+#: src/projections_pi.cpp:137
 msgid "Projections"
-msgstr ""
+msgstr "Projections"
 
-#: src/projections_pi.cpp:143
+#: src/projections_pi.cpp:142
 msgid "Projections plugin offers alternate projections"
-msgstr ""
+msgstr "Le complément \"Projections\" propose d'autre type de projections cartographiques"
 
-#: src/projections_pi.cpp:148
+#: src/projections_pi.cpp:147
 msgid "Projections plugin offers alternative projections\n"
 "The projections can be configured by the user\n"
 "These projections may be useful for a more accurate interpretation of navigational data\n"
-"Mercator projections are especially skewed in high latitudes for examples\n\n"
+"Mercator projections are especially skewed in high latitudes.\n\n"
 "  This plugin requires OpenGL enabled.\n"
-msgstr ""
+msgstr "Le complément Projections offre des projections alternatives\n"
+"Les projections peuvent être configurées par l'utilisateur\n"
+"Ces projections peuvent être utiles pour une interprétation plus précise des données de navigation\n"
+"Les projections de mercator sont particulièrement inclinées dans les latitudes élevées.\n\n"
+" Ce complément nécessite que OpenGL soit activé.\n"
 

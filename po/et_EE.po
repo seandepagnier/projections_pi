@@ -1,0 +1,74 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: opencpn\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-15 14:05-0300\n"
+"PO-Revision-Date: 2018-03-03 08:23-0500\n"
+"Last-Translator: nohal <pavel@kalian.cz>\n"
+"Language-Team: Estonian\n"
+"Language: et_EE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: opencpn\n"
+"X-Crowdin-Language: et\n"
+"X-Crowdin-File: /plugins/projections_pi/po/projections_pi.pot\n"
+
+#: src/ProjectionsUI.cpp:22
+msgid "About Author"
+msgstr "Autorist"
+
+#: src/ProjectionsUI.h:44
+msgid "Projections Preferences"
+msgstr "Projections eelistused"
+
+#: src/projections_pi.cpp:40
+msgid "Mercator"
+msgstr "Merkaator"
+
+#: src/projections_pi.cpp:40
+msgid "Orthographic"
+msgstr "Ortograafiline"
+
+#: src/projections_pi.cpp:40
+msgid "Polar"
+msgstr "Polaarne"
+
+#: src/projections_pi.cpp:40
+msgid "Stereographic"
+msgstr "Stereograafiline"
+
+#: src/projections_pi.cpp:40
+msgid "Gnomonic"
+msgstr "Gnomooniline"
+
+#: src/projections_pi.cpp:40
+msgid "Equirectangular"
+msgstr "Geograafiline projektsioon"
+
+#: src/projections_pi.cpp:92
+msgid "Projection"
+msgstr "Projektsioon"
+
+#: src/projections_pi.cpp:137
+msgid "Projections"
+msgstr "Projektsioonid"
+
+#: src/projections_pi.cpp:142
+msgid "Projections plugin offers alternate projections"
+msgstr "Projections-plugin pakub alternatiivseid projektsioone"
+
+#: src/projections_pi.cpp:147
+msgid "Projections plugin offers alternative projections\n"
+"The projections can be configured by the user\n"
+"These projections may be useful for a more accurate interpretation of navigational data\n"
+"Mercator projections are especially skewed in high latitudes.\n\n"
+"  This plugin requires OpenGL enabled.\n"
+msgstr "Projections-plugin pakub alternatiivseid projektsioone\n"
+"Kasutaja saab projektsioone seadistada\n"
+"Need projektsioonid võivad olla kasulikud navigatsiooniandmete veel täpsemal interpreteerimisel\n"
+"Näiteks on Mercator-projektsioonid kõrgetel laiuskaraadidel eriti moonutatud\n\n"
+" See plugin vajab aktiveeritud OpenGL'i.\n"
+

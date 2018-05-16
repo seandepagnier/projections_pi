@@ -145,11 +145,11 @@ wxString projections_pi::GetShortDescription()
 wxString projections_pi::GetLongDescription()
 {
     return _("Projections plugin offers alternative projections\n\
-The projections can be configured by the user\n\
-These projections may be useful for a more accurate interpretation of navigational data\n\
+These projections may be useful for a more accurate interpretation\n\
+of navigational data.\n\
 Mercator projections are especially skewed in high latitudes.\n\
 \n\
-  This plugin requires OpenGL enabled.\n");
+  This plugin requires OpenGL to be enabled.\n");
 }
 
 void projections_pi::SetCurrentViewPort(PlugIn_ViewPort &vp)

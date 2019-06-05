@@ -1,37 +1,169 @@
 ##---------------------------------------------------------------------------
-## Author:      Sean D'Epagnier
-## ***************************************************************************
-## *   Copyright (C) 2015 by Sean D'Epagnier                                 *
-## *   This program is free software; you can redistribute it and/or modify  *
-## *   it under the terms of the GNU General Public License as published by  *
-## *   the Free Software Foundation; either version 3 of the License, or     *
-## *   (at your option) any later version.                                   *
-## *                                                                         *
-## *   This program is distributed in the hope that it will be useful,       *
-## *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
-## *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
-## *   GNU General Public License for more details.                          *
-## *                                                                         *
-## *   You should have received a copy of the GNU General Public License     *
-## *   along with this program; if not, write to the                         *
-## *   Free Software Foundation, Inc.,                                       *
-## *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,  USA.         *
-## ***************************************************************************
+## Author:      bdbcat aka. dsr (Dave Register)
+## Copyright:
+## License:     wxWidgets License
+##---------------------------------------------------------------------------
 
 
 # define minimum cmake version
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6.2)
+# This should be 2.8.0 to have FindGTK2 module
+IF (COMMAND cmake_policy)
+  CMAKE_POLICY(SET CMP0003 OLD)
+  CMAKE_POLICY(SET CMP0005 OLD)
+  CMAKE_POLICY(SET CMP0011 OLD)
+ENDIF (COMMAND cmake_policy)
 
 PROJECT(projections_pi)
-SET(PACKAGE_NAME projections_pi)
-SET(VERBOSE_NAME Projections)
-SET(TITLE_NAME Projections)
-SET(CPACK_PACKAGE_CONTACT "Sean D'Epagnier ")
 
-INCLUDE( VERSION.cmake )
-SET(PLUGIN_VERSION "${PLUGIN_VERSION_MAJOR}.${PLUGIN_VERSION_MINOR}.${PLUGIN_VERSION_PATCH}" )
+SET(PLUGIN_SOURCE_DIR .)
+
+SET(PACKAGE_NAME projections_pi)
+SET(VERBOSE_NAME projections)
+SET(TITLE_NAME projections)
+SET(CPACK_PACKAGE_CONTACT "Dave Register")
+
+MESSAGE (STATUS "*** Building ${PACKAGE_NAME} ***")
+
+SET(VERSION_MAJOR "0")
+SET(VERSION_MINOR "1")
+SET(VERSION_PATCH "0")
+SET(PACKAGE_VERSION "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}" )
+
+#SET(CMAKE_BUILD_TYPE Release)
+
+IF( NOT CMAKE_BUILD_TYPE )
+  SET( CMAKE_BUILD_TYPE Release CACHE STRING
+       "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel."
+       FORCE )
+ENDIF( NOT CMAKE_BUILD_TYPE )
+
+MESSAGE (STATUS "Build type: ${CMAKE_BUILD_TYPE}")
+
+SET(CMAKE_VERBOSE_MAKEFILE ON)
+
+IF (PREFIX)
+ SET(CMAKE_INSTALL_PREFIX ${PREFIX})
+ENDIF (PREFIX)
+
+SET(PREFIX_BIN bin)
+SET(PREFIX_INCLUDE include)
+SET(PREFIX_DATA share)
+SET(PREFIX_PKGDATA ${PREFIX_DATA}/${PACKAGE_NAME})
+
+IF (NOT WIN32)
+  # default
+  SET (ARCH "i386")
+  IF (UNIX AND NOT APPLE)
+    IF (PREFIX)
+        SET(CMAKE_INSTALL_PREFIX ${PREFIX})
+    ELSE (PREFIX )
+        SET(CMAKE_INSTALL_PREFIX "/usr")
+    ENDIF (PREFIX)
+
+    MESSAGE (STATUS "*** Will install to ${CMAKE_INSTALL_PREFIX}  ***")
+
+    IF (EXISTS /etc/debian_version)
+      SET (PACKAGE_FORMAT "DEB")
+      SET (PACKAGE_DEPS "libc6, libwxgtk3.0-0, libglu1-mesa (>= 7.0.0)")
+      SET (LIB_INSTALL_DIR "lib")
+      IF (CMAKE_SIZEOF_VOID_P MATCHES "8")
+        SET (ARCH "amd64")
+      ELSE (CMAKE_SIZEOF_VOID_P MATCHES "8")
+        SET (ARCH "i386")
+      ENDIF (CMAKE_SIZEOF_VOID_P MATCHES "8")
+    ENDIF (EXISTS /etc/debian_version)
+    IF (EXISTS /etc/redhat-release)
+      SET (PACKAGE_FORMAT "RPM")
+      SET (PACKAGE_DEPS  "opencpn")
+      IF (CMAKE_SIZEOF_VOID_P MATCHES "8")
+        SET (ARCH "x86_64")
+        SET (LIB_INSTALL_DIR "lib64")
+      ELSE (CMAKE_SIZEOF_VOID_P MATCHES "8")
+        SET (ARCH "i386")
+        SET (LIB_INSTALL_DIR "lib")
+      ENDIF (CMAKE_SIZEOF_VOID_P MATCHES "8")
+    ENDIF (EXISTS /etc/redhat-release)
+  ENDIF (UNIX AND NOT APPLE)
+endif(NOT WIN32)
+
+IF (CMAKE_SYSTEM_PROCESSOR MATCHES "arm*")
+  SET (ARCH "armhf")
+  ADD_DEFINITIONS( -DARMHF )
+ENDIF (CMAKE_SYSTEM_PROCESSOR MATCHES "arm*")
+
+MESSAGE (STATUS "*** Build Architecture is ${ARCH}")
+
+
+#  To build for android, use this cmake invocation..
+#$cmake -DUSE_GARMINHOST=OFF -D_wx_selected_config=androideabi-qt
+#-DCMAKE_TOOLCHAIN_FILE=../buildandroid/build_android.cmake
+#-DwxQt_Build=build_android_55_intl -DwxQt_Base=/home/dsr/Projects/wxqt/wxWidgets
+#-DQt_Base=/home/dsr/Projects/qt5bare -DQt_Build=build_release/qtbase ..
+
+IF(DEFINED _wx_selected_config)
+
+#  May be overridden
+IF(NOT DEFINED Qt_Build)
+  SET(Qt_Build "android_armv7")
+ENDIF(NOT DEFINED Qt_Build)
+
+MESSAGE (STATUS "selected config ${_wx_selected_config}")
+
+IF(_wx_selected_config MATCHES "androideabi-qt")
+  MESSAGE (STATUS "Building for wxQt-Android")
+  MESSAGE (STATUS "Qt_Base/Build: " ${Qt_Base} "/" ${Qt_Build})
+  MESSAGE (STATUS "wxQt_Base/Build: " ${wxQt_Base} "/" ${wxQt_Build})
+  SET(QT_ANDROID "ON")
+  SET(QT_LINUX "OFF")
+  SET(QT "ON")
+ENDIF(_wx_selected_config MATCHES "androideabi-qt")
+
+ENDIF(DEFINED _wx_selected_config)
+
 
 INCLUDE("cmake/PluginConfigure.cmake")
+
+
+INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/src/wxJSON)
+INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/src)
+INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR})
+
+
+IF(NOT WIN32)
+ ADD_DEFINITIONS( "-Wall -g -fexceptions -O2 -Wno-unused -fno-strict-aliasing")
+
+ IF(CMAKE_BUILD_TYPE MATCHES "Debug")
+    ADD_DEFINITIONS( " -O0")
+ ENDIF(CMAKE_BUILD_TYPE MATCHES "Debug")
+
+ IF(NOT APPLE)
+  SET(CMAKE_SHARED_LINKER_FLAGS "-Wl,-Bsymbolic")
+  ADD_DEFINITIONS( "-rdynamic" )
+ ELSE(NOT APPLE)
+  SET(CMAKE_SHARED_LINKER_FLAGS "-Wl -undefined dynamic_lookup")
+  ADD_DEFINITIONS( "-Wno-overloaded-virtual" )
+ ENDIF(NOT APPLE)
+
+ENDIF(NOT WIN32)
+
+
+# Add some definitions to satisfy MS
+IF(WIN32)
+    ADD_DEFINITIONS(-D__MSVC__)
+    ADD_DEFINITIONS(-D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE)
+ENDIF(WIN32)
+
+# Let cmake find additional modules private
+LIST(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR})
+
+
+ADD_DEFINITIONS(-DTIXML_USE_STL)
+
+
+# For convenience we define the sources as a variable. You can add
+# header files and cpp/c files and CMake will sort them out
+
 
 SET(SRC_PROJECTIONS
     src/projections_pi.cpp
@@ -43,6 +175,55 @@ SET(SRC_PROJECTIONS
 
 ADD_LIBRARY(${PACKAGE_NAME} SHARED ${SRC_PROJECTIONS} )
 
-INCLUDE("cmake/PluginInstall.cmake")
+IF (QT_ANDROID )
+    TARGET_LINK_LIBRARIES( ${PACKAGE_NAME} ${OCPN_Core_LIBRARIES} )
+    TARGET_LINK_LIBRARIES( ${PACKAGE_NAME} "-lgnustl_shared")
+    TARGET_LINK_LIBRARIES( ${PACKAGE_NAME} "-lz" )
+ENDIF(QT_ANDROID)
+
+IF(WIN32)
+  SET(OPENCPN_IMPORT_LIB "C:/Projects/opencpn/build/${CMAKE_CFG_INTDIR}/opencpn.lib")
+  TARGET_LINK_LIBRARIES( ${PACKAGE_NAME} ${OPENCPN_IMPORT_LIB} )
+
+ENDIF(WIN32)
+
+IF(NOT APPLE)
+TARGET_LINK_LIBRARIES( ${PACKAGE_NAME} ${wxWidgets_LIBRARIES} )
+ENDIF(NOT APPLE)
+
+
+
+# Install any special data files or binary helpers here....
+# The PlugIn library itself and any "data" directory (with contents) gets installed in generic PluginInstall.cmake later
+
+IF(UNIX AND NOT APPLE)
+SET(PARENT opencpn)
+SET(PREFIX_PLUGINS ${LIB_INSTALL_DIR}/${PARENT})
+SET(PREFIX_PARENTBIN bin)
+SET(PREFIX_PARENTDATA ${PREFIX_DATA}/${PARENT})
+
+ENDIF(UNIX AND NOT APPLE)
+
+IF(WIN32)
+
+   INSTALL(FILES "buildwin/ofcserverd/ofcserverd.exe"
+      PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ WORLD_EXECUTE
+      DESTINATION "plugins\\\\${PACKAGE_NAME}")
+
+    INSTALL(TARGETS ${PACKAGE_NAME} RUNTIME DESTINATION "plugins")
+    SET(INSTALL_DIRECTORY "plugins\\\\${PACKAGE_NAME}")
+
+ENDIF(WIN32)
+
+
+
+SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "dsr")
+
 INCLUDE("cmake/PluginLocalization.cmake")
+
+IF(NOT QT_ANDROID)
+INCLUDE("cmake/PluginInstall.cmake")
 INCLUDE("cmake/PluginPackage.cmake")
+ENDIF(NOT QT_ANDROID)
+
+
